@@ -4,3 +4,4 @@ Pyrogram~=1.2.11
 setuptools~=44.0.0
 python-dotenv
 youtube_dl
+python-magic
