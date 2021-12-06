@@ -1,6 +1,6 @@
 {
   "name": "Telegram URL Upload",
-  "description": "Hello Heroku",
+  "description": "Hello, Heroku",
   "repository": "https://github.com/AbhijithNT/Telegram-URL-Upload/",
   "keywords": ["telegram", "pyrogram", "telegram bot"],
   "env": {
@@ -8,14 +8,14 @@
       "description": "Your Bot token from @Botfather",
       "value": ""
     },
-    "APP_ID": {
+    "API_ID": {
       "description": "Your API_ID from https://my.telegram.org/apps ",
       "value": ""
     },
     "API_HASH": {
       "description": "Your API_HASH from https://my.telegram.org/apps",
       "value": ""
-    },
+    }
   },
   "buildpacks": [
     {
