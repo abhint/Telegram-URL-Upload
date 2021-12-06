@@ -1,6 +1,6 @@
 {
   "name": "Telegram URL Upload Bot",
-  "description": "-_-",
+  "description": "Hello",
   "repository": "https://github.com/AbhijithNT/Telegram-URL-Upload/",
   "keywords": ["telegram", "pyrogram", "telegram bot"],
   "env": {
