@@ -37,6 +37,7 @@ async def progress(current, total, message: Message, start_time):
 
     except FloodWait as e:
         time.sleep(e.x)
+        await message.edit('....')
 
 
 def progress_bar(percent):
