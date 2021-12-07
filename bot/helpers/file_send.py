@@ -1,4 +1,6 @@
 import magic
+from pyrogram.types.messages_and_media import thumbnail
+
 from ..linktofile import TG
 from pyrogram.types import Message
 from pyrogram.errors import RPCError
@@ -14,7 +16,7 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
             return await client.send_video(
                 chat_id=updates.chat.id,
                 video=filename,
-                caption="Hello",
+                caption=f"MIME: {file_mime}\nvideo",
                 reply_to_message_id=message.message_id,
                 progress=progress,
                 progress_args=(
@@ -26,7 +28,7 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
             return await client.send_photo(
                 chat_id=updates.chat.id,
                 photo=filename,
-                caption="Hello",
+                caption=f"MIME: {file_mime}\nimage",
                 reply_to_message_id=message.message_id,
                 progress=progress,
                 progress_args=(
@@ -39,7 +41,7 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
             return await client.send_audio(
                 chat_id=updates.chat.id,
                 audio=filename,
-                caption="Hello",
+                caption=f"MIME: {file_mime}\naudio",
                 progress=progress,
                 reply_to_message_id=message.message_id,
                 progress_args=(
@@ -51,13 +53,13 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
             return await client.send_document(
                 chat_id=updates.chat.id,
                 document=filename,
-                caption="Hello",
+                caption=f"MIME: {file_mime}\ndocument",
                 progress=progress,
                 reply_to_message_id=message.message_id,
                 progress_args=(
                     updates,
                     _now
-                )
+                ),
             )
     except RPCError as err:
         raise Exception(f'{err}')
