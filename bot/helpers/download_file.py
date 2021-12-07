@@ -14,7 +14,7 @@ async def run_command(*args, messages: Message):
     stdout, stderr = await process.communicate()
     if process.returncode == 0:
         await messages.edit_text('Downloading complected')
-        # print("Done:", command, "(pid = " + str(process.pid) + ")", flush=True)
+        # print("Done:", args, "(pid = " + str(process.pid) + ")", flush=True)
     else:
         await messages.edit_text('Downloading Failed')
         # print(
@@ -52,7 +52,3 @@ async def download_file(url: str, download_location: str, messages: Message) -> 
         return False
 
     return f
-
-# loop = asyncio.get_event_loop()
-# r = loop.run_until_complete(download_file('https://de20.seedr.cc/ff_get/1061871730/WWW.YIFY-TORRENTS.COM.jpg?st=cLRD77ytKvSgskFsHG5QqA&e=1638858214'))
-# print(r)

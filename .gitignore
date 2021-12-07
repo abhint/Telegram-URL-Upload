@@ -1,7 +1,11 @@
+# PyCharm
+.idea
+
 # bot
 *.session
 linktofile.txt
 test.py
+Download
 
 
 # Byte-compiled / optimized / DLL files
