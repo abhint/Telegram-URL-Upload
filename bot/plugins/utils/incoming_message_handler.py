@@ -1,9 +1,11 @@
 import time
-from bot.linktofile import TG
+
 from pyrogram import filters
-from pyrogram.types import Message, InputMediaPhoto
-from bot import REGEX, DOWNLOAD_LOCATION
+from pyrogram.types import Message
+
+from bot import DOWNLOAD_LOCATION, ERROR, URL_NOT_VALID
 from bot.helpers import link_check, download_file, file_send, remove_file
+from bot.linktofile import TG
 
 
 @TG.on_message(filters.regex(pattern='.*http.*'))
@@ -27,20 +29,19 @@ async def incoming_urls(client: TG, message: Message) -> None:
         reply_to_message_id=message.message_id,
         disable_web_page_preview=True
     )
-
     file_download_path = await download_file(url, download_location, _reply)
-    await _reply.delete()
+
     if file_download_path is False:
         await message.reply('Sorry file path is not found\n{ERROR}')
         return
     try:
-        await file_send(file_download_path, client, message)
+        await file_send(file_download_path, client, _reply, message)
         remove_file(file_download_path)
+        await _reply.delete()
     except Exception as err:
+        print(err)
         await client.send_message(
             message.chat.id,
             f'File uploading error\n{ERROR}',
             reply_to_message_id=message.message_id
         )
-
-
