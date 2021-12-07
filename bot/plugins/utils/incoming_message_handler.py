@@ -17,19 +17,21 @@ async def incoming_urls(client: TG, message: Message) -> None:
 
     url_check = await link_check(url, message)
     if url_check is False:
-        await message.reply(f'The link is not valid or something is wrong with the bot. Contact **[Abhijith N T]('
-                            f'tg://user?id=429320566)** or create a new issue with GitHub.')
+        await message.reply(f'{URL_NOT_VALID}\n{ERROR}'.format(url),
+                            disable_web_page_preview=True
+                            )
         return
     _reply = await client.send_message(
         message.chat.id,
         f'**URL:** {url} is valid',
-        reply_to_message_id=message.message_id
+        reply_to_message_id=message.message_id,
+        disable_web_page_preview=True
     )
 
     file_download_path = await download_file(url, download_location, _reply)
     await _reply.delete()
     if file_download_path is False:
-        await message.reply('Sorry file path is not found')
+        await message.reply('Sorry file path is not found\n{ERROR}')
         return
     try:
         await file_send(file_download_path, client, message)
@@ -37,7 +39,7 @@ async def incoming_urls(client: TG, message: Message) -> None:
     except Exception as err:
         await client.send_message(
             message.chat.id,
-            f'File uploading error',
+            f'File uploading error\n{ERROR}',
             reply_to_message_id=message.message_id
         )
 
