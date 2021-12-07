@@ -6,3 +6,4 @@ python-dotenv~=0.19.2
 youtube_dl
 python-magic~=0.4.24
 hurry.filesize
+psutil~=5.8.0
