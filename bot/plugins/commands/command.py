@@ -9,10 +9,10 @@ LOGGER = logger(__name__)
 # Start command
 
 @TG.on_message(filters.command("start") & filters.private)
-async def start_message(client: TG, messages: Message):
-    await messages.reply(f'Hello!\
-    [{messages.from_user.first_name}](tg://user?id={messages.from_user.id})')
+async def start_message(_, messages: Message):
     LOGGER.info(f'{messages.from_user.first_name} - {messages.from_user.id}')
+    await messages.reply('Hello! '
+                         f'[{messages.from_user.first_name}](tg://user?id={messages.from_user.id})')
 
 
 # help command
