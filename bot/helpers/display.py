@@ -23,7 +23,7 @@ async def progress(current, total, message: Message, start_time):
         time_data(start_time)
     )
 
-    speed_ = "Speed: {0}".format(
+    speed_ = "Speed: {0}/s".format(
         human_readable_size(size=current / time_diff)
     )
     download_ = "{0} of {1}".format(
@@ -31,16 +31,12 @@ async def progress(current, total, message: Message, start_time):
         human_readable_size(total)
     )
     try:
-
         await message.edit(
-            text=f"{progress_}\n{download_}\n{speed_}    {time_}"
+            text=f"{progress_}\n\n{download_}\n\n{speed_}\t{time_}"
         )
 
     except FloodWait as e:
         time.sleep(e.x)
-        await message.edit(
-            text=f"ERROR: {e}"
-        )
 
 
 def progress_bar(percent):
