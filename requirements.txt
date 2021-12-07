@@ -2,6 +2,7 @@ pip~=20.0.2
 TgCrypto~=1.2.2
 Pyrogram~=1.2.11
 setuptools~=44.0.0
-python-dotenv
+python-dotenv~=0.19.2
 youtube_dl
-python-magic
+python-magic~=0.4.24
+hurry.filesize
