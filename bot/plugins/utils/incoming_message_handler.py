@@ -32,7 +32,7 @@ async def incoming_urls(client: TG, message: Message) -> None:
     file_download_path = await download_file(url, download_location, _reply)
 
     if file_download_path is False:
-        await message.reply('Sorry file path is not found\n{ERROR}')
+        await message.reply(f'Sorry file path is not found\n{ERROR}')
         return
     try:
         await file_send(file_download_path, client, _reply, message)
