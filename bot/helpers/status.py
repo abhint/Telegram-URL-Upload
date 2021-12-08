@@ -5,7 +5,7 @@ import psutil
 from bot.helpers import human_readable_size
 
 
-def system_status():
+def system_status() -> str:
     disk_size = psutil.disk_usage('.')
     total = human_readable_size(disk_size.total)
     used = human_readable_size(disk_size.used)
