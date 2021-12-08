@@ -50,7 +50,7 @@ async def download_file(url: str, download_location: str, messages: Message) -> 
     if output is None:
         return False
     f = os.path.abspath(output)
-    if os.path.isfile(f):
+    if os.path.isfile(f) is not True:
         return False
 
     return f
