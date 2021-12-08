@@ -1,9 +1,9 @@
-pip=>20.0.2
-TgCrypto=>1.2.2
-Pyrogram=>1.2.11
-setuptools=>44.0.0
-python-dotenv=>0.19.2
+pip
+TgCrypto
+Pyrogram
+setuptools
+python-dotenv
 youtube_dl
-python-magic=>0.4.24
+python-magic
 hurry.filesize
-psutil=>5.8.0
+psutil
