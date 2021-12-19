@@ -32,9 +32,9 @@ def system_status() -> str:
                f'**Operating system:** `{system_os}`\n' \
                f'**Release:** `{release}`\n' \
                f'**Architecture:** `{" ".join(architecture)}`\n' \
-               f'**Release version:** `{version}`' \
-               f'**Python version: ** `{python_version}`' \
-               f'**Pyrogram version:** `{pyrogram_version}' \
-               f'**youtube-dl version:** `{youtube_dl_version}'
+               f'**Release version:** `{version}`\n' \
+               f'**Python version: ** `{python_version}`\n' \
+               f'**Pyrogram version:** `{pyrogram_version}`\n' \
+               f'**youtube-dl version:** `{youtube_dl_version}`\n'
 
     return resource
