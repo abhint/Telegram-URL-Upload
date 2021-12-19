@@ -27,7 +27,7 @@ async def progress(current, total, message: Message, start_time):
     )
 
     speed_ = "Speed: {0}/s".format(
-        human_readable_size(size=current / time_diff)
+        human_readable_size(current / time_diff)
     )
     download_ = "{0} of {1}".format(
         human_readable_size(current),
