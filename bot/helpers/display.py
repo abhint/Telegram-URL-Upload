@@ -8,6 +8,7 @@
 from .time import time_data
 import time
 from pyrogram.types import Message
+from hurry.filesize import size, alternative
 from pyrogram.errors import FloodWait, BadRequest
 
 error = (FloodWait, BadRequest)
@@ -50,9 +51,10 @@ def progress_bar(percent):
     return f"{done_block * int(percent / 5)}{empty_block * int(20 - int(percent / 5))}"
 
 
-def human_readable_size(size, decimal_places=2):
-    for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
-        if size < 1000.0:
-            break
-        size /= 1000.0
-    return f"{size:.{decimal_places}f} {unit}"
+def human_readable_size(_size):
+    return size(_size, system=alternative)
+    # for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
+    #     if size < 1000.0:
+    #         break
+    #     size /= 1000.0
+    # return f"{size:.{decimal_places}f} {unit}"
