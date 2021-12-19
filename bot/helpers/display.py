@@ -8,7 +8,9 @@
 from .time import time_data
 import time
 from pyrogram.types import Message
-from pyrogram.errors import FloodWait
+from pyrogram.errors import FloodWait, BadRequest
+
+error = (FloodWait, BadRequest)
 
 
 async def progress(current, total, message: Message, start_time):
@@ -35,8 +37,9 @@ async def progress(current, total, message: Message, start_time):
             text=f"{progress_}\n\n{download_}\n\n{speed_}\t{time_}"
         )
 
-    except FloodWait as e:
-        time.sleep(e.x)
+    except error as e:
+        time.sleep(3)
+        print(e)
         print(f'DISPLAY ERROR: {e}')
         pass
 
