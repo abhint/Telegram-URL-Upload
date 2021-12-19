@@ -9,9 +9,9 @@ from .time import time_data
 import time
 from pyrogram.types import Message
 from hurry.filesize import size, alternative
-from pyrogram.errors import FloodWait, BadRequest
+from pyrogram.errors import FloodWait, BadRequest, MessageNotModified
 
-error = (FloodWait, BadRequest)
+error = (FloodWait, MessageNotModified, BadRequest)
 
 
 async def progress(current, total, message: Message, start_time):
@@ -39,8 +39,6 @@ async def progress(current, total, message: Message, start_time):
         )
 
     except error as e:
-        time.sleep(3)
-        print(e)
         print(f'DISPLAY ERROR: {e}')
         pass
 
