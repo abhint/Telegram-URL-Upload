@@ -36,7 +36,8 @@ async def progress(current, total, message: Message, start_time):
         )
 
     except FloodWait as e:
-        print(e)
+        time.sleep(e.x)
+        print(f'DISPLAY ERROR: {e}')
         pass
 
 
