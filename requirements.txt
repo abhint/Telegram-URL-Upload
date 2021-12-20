@@ -1,9 +1,10 @@
 pip
 TgCrypto
-Pyrogram
+Pyrogram>=1.2.11
 setuptools
-python-dotenv
+python-dotenv>=0.19.2
 youtube_dl
-python-magic
+python-magic>=0.4.24
 hurry.filesize
-psutil
+psutil>=5.8.0
+moviepy>=1.0.3
