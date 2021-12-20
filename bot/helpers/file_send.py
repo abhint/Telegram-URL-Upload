@@ -12,7 +12,7 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
     file_mime = magic.Magic(mime=True).from_file(filename)
     try:
         if file_mime.startswith('video'):
-            duration, thumb = video_details(filename)
+            width, height, duration, thumb = video_details(filename)
             return await client.send_video(
                 chat_id=updates.chat.id,
                 video=filename,
@@ -21,6 +21,8 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
                 progress=progress,
                 duration=duration,
                 thumb=thumb,
+                width=width,
+                height=height,
                 progress_args=(
                     updates,
                     _now
