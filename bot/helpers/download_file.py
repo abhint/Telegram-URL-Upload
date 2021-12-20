@@ -1,9 +1,11 @@
 import os
 import asyncio
+from typing import Union
+
 from pyrogram.types import Message
 
 
-async def run_command(*args, messages: Message):
+async def run_command(*args, messages: Message) -> Union[str, None]:
     process = await asyncio.create_subprocess_exec(
         *args,
         # stdout must a pipe to be accessible as process.stdout
@@ -32,7 +34,7 @@ async def run_command(*args, messages: Message):
     return value
 
 
-async def download_file(url: str, download_location: str, messages: Message) -> str:
+async def download_file(url: str, download_location: str, messages: Message) -> Union[bool, str]:
     commands = [
         "youtube-dl",
         "--no-warnings",

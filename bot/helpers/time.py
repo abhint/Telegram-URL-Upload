@@ -6,17 +6,14 @@
 import time
 
 
-def time_data(start_time):
-    end = time.time()
-    now = end - start_time
-    now_time = now
-    day = now_time // (24 * 3600)
-    now_time = now_time % (24 * 3600)
-    hour = now_time // 3600
-    now_time %= 3600
-    minutes = now_time // 60
-    now_time %= 60
-    seconds = now_time
+def time_data(_time):
+    day = _time // (24 * 3600)
+    _time = _time % (24 * 3600)
+    hour = _time // 3600
+    _time %= 3600
+    minutes = _time // 60
+    _time %= 60
+    seconds = _time
     if day != 0:
         return "%dd %dh %dm %ds" % (day, hour, minutes, seconds)
     if hour != 0:

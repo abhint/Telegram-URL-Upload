@@ -11,15 +11,14 @@ class TG(Client):
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
-            plugins={
-                "root": "bot/plugins"
-            }
+            plugins=dict(root="bot/plugins"),
+            sleep_threshold=60
         )
 
     async def start(self):
         await super().start()
         self.LOGGER.info(f'Bot is Online!')
 
-    async def stop(self):
+    async def stop(self, *args):
         await super().stop()
         self.LOGGER.info(f'Bot is Offline!')

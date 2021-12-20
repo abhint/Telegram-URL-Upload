@@ -1,11 +1,10 @@
 import magic
-from pyrogram.types.messages_and_media import thumbnail
-
 from ..linktofile import TG
 from pyrogram.types import Message
 from pyrogram.errors import RPCError
 import time
 from .display import progress
+from .tools import video_details
 
 
 async def file_send(filename: str, client: TG, updates: Message, message: Message):
@@ -13,12 +12,17 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
     file_mime = magic.Magic(mime=True).from_file(filename)
     try:
         if file_mime.startswith('video'):
+            width, height, duration, thumb = video_details(filename)
             return await client.send_video(
                 chat_id=updates.chat.id,
                 video=filename,
                 caption=f"MIME: {file_mime}\nvideo",
                 reply_to_message_id=message.message_id,
                 progress=progress,
+                duration=duration,
+                thumb=thumb,
+                width=width,
+                height=height,
                 progress_args=(
                     updates,
                     _now
