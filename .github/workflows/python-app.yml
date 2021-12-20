@@ -18,4 +18,8 @@ jobs:
         with:
           python-version: 3.9.9
       - run: pip install -r requirements.txt
-      - run: python -m bot 
+      - run: python -m bot
+        env: 
+          BOT_TOKEN: ${{secrets.BOT_TOKEN}}
+          API_ID: ${{secrets.API_ID}}
+          API_HASH: ${{secrets.API_HASH}}
