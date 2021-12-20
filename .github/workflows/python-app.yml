@@ -18,4 +18,4 @@ jobs:
         with:
           python-version: 3.9.9
       - run: pip install -r requirements.txt
-      - run: pyhton -m bot 
+      - run: python -m bot 
