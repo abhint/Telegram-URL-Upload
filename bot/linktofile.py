@@ -1,5 +1,5 @@
 from pyrogram import Client
-from bot import (API_ID, API_HASH, BOT_TOKEN, logger)
+from bot import (API_ID, API_HASH, BOT_TOKEN, logger, BANNER)
 
 
 class TG(Client):
@@ -18,6 +18,7 @@ class TG(Client):
     async def start(self):
         await super().start()
         self.LOGGER.info(f'Bot is Online!')
+        print(BANNER)
 
     async def stop(self, *args):
         await super().stop()
