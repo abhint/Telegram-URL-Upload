@@ -10,5 +10,5 @@ def video_details(file_path):
     width = video.w
     height = video.h
     output = f'{save_file_path}/{file_name}.png'
-    video.save_frame(output, t=1.0)
+    video.save_frame(output, t=15)
     return width, height, int(duration), output

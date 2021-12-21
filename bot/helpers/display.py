@@ -23,7 +23,7 @@ async def progress(current, total, message: Message, start_time):
         f"{current * 100 / total:.1f}"
     )
     time_ = "Time: {0}".format(
-        time_data(start_time)
+        time_data(time_diff)
     )
 
     speed_ = "Speed: {0}/s".format(
