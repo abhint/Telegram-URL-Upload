@@ -22,13 +22,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install tox
+      - name: Run Telegram Bot
+        run: |
+          python -m bot
         env: 
           BOT_TOKEN: ${{secrets.BOT_TOKEN}}
           API_ID: ${{secrets.API_ID}}
           API_HASH: ${{secrets.API_HASH}}
-      - name: Run Telegram Bot
-        run: |
-          python -m bot
       - name: Run tests
         run: |
           tox
