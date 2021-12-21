@@ -35,10 +35,19 @@ $ python -m bot
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-## Thanks
+## Built With
 
-- [pyrogram](https://github.com/pyrogram/pyrogram) 
-- [youtube-dl](https://github.com/ytdl-org/youtube-dl)
+- [Pyrogram](https://github.com/pyrogram/pyrogram) - Telegram MTProto API Client Library and Framework
+- [Youtube-dl](https://github.com/ytdl-org/youtube-dl) - Command-line program to download videos from YouTube.com and other video sites
+
+## Contributing
+
+Please read [CODE_OF_CONDUCT.md](https://github.com/AbhijithNT/Telegram-URL-Upload/blob/main/CODE_OF_CONDUCT.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Authors
+- **[Abhijith N T](https://github.com/AbhijithNT)** - _Initial work_
+
+See also the list of [contributors](https://github.com/AbhijithNT/Telegram-URL-Upload/contributors) who participated in this project.
 
 ## Telegram Channel
 Join the [News channel](https://telegram.me/AbhijithNT). Here we will post releases and updates.
