@@ -1,5 +1,6 @@
 ## Getting started
 
+<<<<<<< dev
 **This is a telegram bot. It will upload your file to Telegram using the link**
 
 - **Installation**
@@ -30,6 +31,11 @@ $ python -m bot
 2. `BOT_TOKEN` [BotFather](https://telegram.me/BotFather)
 
 ## Heroku Deploy
+=======
+## beta
+
+### Heroku Deploy
+>>>>>>> main
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Thanks
