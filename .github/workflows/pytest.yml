@@ -23,3 +23,4 @@ jobs:
           BOT_TOKEN: ${{secrets.BOT_TOKEN}}
           API_ID: ${{secrets.API_ID}}
           API_HASH: ${{secrets.API_HASH}}
+          NAME_U: ${{secrets.NAME_U}}
