@@ -6,6 +6,8 @@ import time
 from .display import progress
 from .tools import video_details
 
+def progress___(current, total):
+    print(f"{current * 100 / total:.1f}%")
 
 async def file_send(filename: str, client: TG, updates: Message, message: Message):
     _now = time.time()
@@ -18,15 +20,11 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
                 video=filename,
                 caption=f"MIME: {file_mime}\nvideo",
                 reply_to_message_id=message.message_id,
-                progress=progress,
+                progress=progress___,
                 duration=duration,
                 thumb=thumb,
                 width=width,
                 height=height,
-                progress_args=(
-                    updates,
-                    _now
-                )
             )
         elif file_mime.startswith('image'):
             return await client.send_photo(
