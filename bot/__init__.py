@@ -35,7 +35,7 @@ DOWNLOAD_LOCATION = "./download/{}/{}/{}"
 # Messages
 
 ERROR = '\nContact **[Abhijith N T](tg://user?id=429320566)** or create a [new issue](' \
-        'https://github.com/AbhijithNT/Telegram-URL-Upload/issues/new) with GitHub.'
+        'https://github.com/abhint/Telegram-URL-Upload/issues/new) with GitHub.'
 URL_NOT_VALID = 'URL: {}\nThe link is not valid or something is wrong with the bot.'
 
 # -_-
