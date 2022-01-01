@@ -7,16 +7,17 @@ from .display import progress
 from .tools import video_details
 
 
-async def file_send(filename: str, client: TG, updates: Message, message: Message):
+async def file_send(file_path: str, client: TG, updates: Message, message: Message):
     _now = time.time()
-    file_mime = magic.Magic(mime=True).from_file(filename)
+    file_mime = magic.Magic(mime=True).from_file(file_path)
+    file_name = file_path.split('/')[-1].split('.')[0]
     try:
         if file_mime.startswith('video'):
-            width, height, duration, thumb = video_details(filename)
+            width, height, duration, thumb = video_details(file_path)
             return await client.send_video(
                 chat_id=updates.chat.id,
-                video=filename,
-                caption=f"MIME: {file_mime}\nvideo",
+                video=file_path,
+                caption=f"{file_name}",
                 reply_to_message_id=message.message_id,
                 progress=progress,
                 duration=duration,
@@ -31,8 +32,8 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
         elif file_mime.startswith('image'):
             return await client.send_photo(
                 chat_id=updates.chat.id,
-                photo=filename,
-                caption=f"MIME: {file_mime}\nimage",
+                photo=file_path,
+                caption=f"{file_name}",
                 reply_to_message_id=message.message_id,
                 progress=progress,
                 progress_args=(
@@ -44,8 +45,8 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
         elif file_mime.startswith('audio'):
             return await client.send_audio(
                 chat_id=updates.chat.id,
-                audio=filename,
-                caption=f"MIME: {file_mime}\naudio",
+                audio=file_path,
+                caption=f"{file_name}",
                 progress=progress,
                 reply_to_message_id=message.message_id,
                 progress_args=(
@@ -56,8 +57,8 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
         else:
             return await client.send_document(
                 chat_id=updates.chat.id,
-                document=filename,
-                caption=f"MIME: {file_mime}\ndocument",
+                document=file_path,
+                caption=f"{file_name}",
                 progress=progress,
                 reply_to_message_id=message.message_id,
                 progress_args=(
