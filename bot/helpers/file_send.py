@@ -24,10 +24,7 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
                 thumb=thumb,
                 width=width,
                 height=height,
-                progress_args=(
-                    updates,
-                    _now
-                )
+                progress_args=(updates,)
             )
         elif file_mime.startswith('image'):
             return await client.send_photo(
@@ -36,10 +33,8 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
                 caption=f"{file_name}",
                 reply_to_message_id=message.message_id,
                 progress=progress,
-                progress_args=(
-                    updates,
-                    _now
-                )
+                progress_args=(updates,)
+
             )
 
         elif file_mime.startswith('audio'):
@@ -49,10 +44,7 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
                 caption=f"{file_name}",
                 progress=progress,
                 reply_to_message_id=message.message_id,
-                progress_args=(
-                    updates,
-                    _now
-                )
+                progress_args=(updates,)
             )
         else:
             return await client.send_document(
@@ -61,10 +53,7 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
                 caption=f"{file_name}",
                 progress=progress,
                 reply_to_message_id=message.message_id,
-                progress_args=(
-                    updates,
-                    _now
-                ),
+                progress_args=(updates,),
             )
     except RPCError as err:
         raise Exception(f'{err}')
