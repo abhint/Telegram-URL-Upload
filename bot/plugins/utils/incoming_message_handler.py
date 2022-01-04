@@ -45,3 +45,9 @@ async def incoming_urls(client: TG, message: Message) -> None:
             f'File uploading error\n{ERROR}',
             reply_to_message_id=message.message_id
         )
+
+    await _reply.delete()
+    try:
+        remove_file(file_download_path)
+    except Exception as e:
+        print(e)
