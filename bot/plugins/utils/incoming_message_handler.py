@@ -2,14 +2,16 @@ import time
 
 from pyrogram import filters
 from pyrogram.types import Message
-
-from bot import DOWNLOAD_LOCATION, ERROR, URL_NOT_VALID
+from bot import DOWNLOAD_LOCATION, ERROR, URL_NOT_VALID, logger
 from bot.helpers import link_check, download_file, file_send, remove_file
 from bot.linktofile import TG
+
+LOGGER = logger(__name__)
 
 
 @TG.on_message(filters.regex(pattern='.*http.*'))
 async def incoming_urls(client: TG, message: Message) -> None:
+    LOGGER.info(f'{message.from_user.id} - {message.text}')
     url = message.text
     if '|' in url:
         url, file_name = url.replace(' ', '').split('|')
