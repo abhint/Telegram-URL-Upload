@@ -16,4 +16,5 @@ async def link_check(url: str) -> bool:
             ydl.extract_info(url, download=False)
             return True
     except YoutubeDLError as err:
+        print(err)
         return False
