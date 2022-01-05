@@ -8,11 +8,12 @@ async def link_check(url: str) -> bool:
     :return: True if download content is available or False
     """
 
+    ydl_opts = {
+        'no_warnings': True
+    }
     try:
-        with YoutubeDL() as ydl:
-            info = ydl.extract_info(url, download=False)
+        with YoutubeDL(ydl_opts) as ydl:
+            ydl.extract_info(url, download=False)
             return True
     except YoutubeDLError as err:
         return False
-
-# print(loop.run_until_complete(link_check(url, Message)))
