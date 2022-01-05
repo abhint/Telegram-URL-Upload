@@ -64,5 +64,5 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
             )
             await updates.edit_text(f'Uploaded...100% in {time_data(time.time() - _now)}')
     except RPCError as err:
-        raise Exception(f'{err}')
+        raise Exception(f'File Upload RPCError: {err}')
     # await updates.delete()

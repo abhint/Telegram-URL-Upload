@@ -2,14 +2,16 @@ import time
 
 from pyrogram import filters
 from pyrogram.types import Message
-
-from bot import DOWNLOAD_LOCATION, ERROR, URL_NOT_VALID
+from bot import DOWNLOAD_LOCATION, ERROR, URL_NOT_VALID, logger
 from bot.helpers import link_check, download_file, file_send, remove_file
 from bot.linktofile import TG
+
+LOGGER = logger(__name__)
 
 
 @TG.on_message(filters.regex(pattern='.*http.*'))
 async def incoming_urls(client: TG, message: Message) -> None:
+    LOGGER.info(f'{message.from_user.id} - {message.text}')
     url = message.text
     if '|' in url:
         url, file_name = url.replace(' ', '').split('|')
@@ -17,7 +19,7 @@ async def incoming_urls(client: TG, message: Message) -> None:
     else:
         download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), '%(title)s.%(ext)s')
 
-    url_check = await link_check(url, message)
+    url_check = await link_check(url)
     if url_check is False:
         await message.reply(f'{URL_NOT_VALID}\n{ERROR}'.format(url),
                             disable_web_page_preview=True
@@ -36,10 +38,8 @@ async def incoming_urls(client: TG, message: Message) -> None:
         return
     try:
         await file_send(file_download_path, client, _reply, message)
-        remove_file(file_download_path)
-        await _reply.delete()
     except Exception as err:
-        print(err)
+        print(f"'File uploading error: {err}")
         await client.send_message(
             message.chat.id,
             f'File uploading error\n{ERROR}',
