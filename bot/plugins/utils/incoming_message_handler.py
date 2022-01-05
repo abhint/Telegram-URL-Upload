@@ -19,7 +19,7 @@ async def incoming_urls(client: TG, message: Message) -> None:
     else:
         download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), '%(title)s.%(ext)s')
 
-    url_check = await link_check(url, message)
+    url_check = await link_check(url)
     if url_check is False:
         await message.reply(f'{URL_NOT_VALID}\n{ERROR}'.format(url),
                             disable_web_page_preview=True
