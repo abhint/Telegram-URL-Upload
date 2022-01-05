@@ -38,10 +38,8 @@ async def incoming_urls(client: TG, message: Message) -> None:
         return
     try:
         await file_send(file_download_path, client, _reply, message)
-        remove_file(file_download_path)
-        await _reply.delete()
     except Exception as err:
-        print(err)
+        print(f"'File uploading error: {err}")
         await client.send_message(
             message.chat.id,
             f'File uploading error\n{ERROR}',
