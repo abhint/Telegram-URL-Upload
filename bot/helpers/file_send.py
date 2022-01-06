@@ -1,4 +1,5 @@
 import magic
+import os
 from ..linktofile import TG
 from pyrogram.types import Message
 from pyrogram.errors import RPCError
