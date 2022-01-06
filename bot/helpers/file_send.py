@@ -4,14 +4,16 @@ from pyrogram.types import Message
 from pyrogram.errors import RPCError
 import time
 from .time import time_data
-# from .display import progress
+from bot import THUMB
 from .tools import video_details
 
 
 async def file_send(file_path: str, client: TG, updates: Message, message: Message):
     _now = time.time()
     file_mime = magic.Magic(mime=True).from_file(file_path)
-    file_name = file_path.split('/')[-1].split('.')[0]
+    file_name = os.path.basename(file_path)
+    document_thumb = THUMB if THUMB else None
+    # file_name = file_path.split('/')[-1].split('.')[0]
     try:
         if file_mime.startswith('video'):
             width, height, duration, thumb = video_details(file_path)
@@ -59,6 +61,7 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
                 document=file_path,
                 caption=f"{file_name}",
                 reply_to_message_id=message.message_id,
+                thumb=document_thumb
                 # progress=progress,
                 # progress_args=(updates,),
             )
