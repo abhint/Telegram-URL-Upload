@@ -19,7 +19,7 @@ class TG(Client):
     async def start(self):
         await super().start()
         self.LOGGER.info(f'Bot is Online!')
-        print(BANNER)
+        # print(BANNER)
 
     async def stop(self, *args):
         await super().stop()
