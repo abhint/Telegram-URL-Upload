@@ -56,12 +56,12 @@ async def file_send(filename: str, client: TG, updates: Message, message: Messag
                 chat_id=updates.chat.id,
                 document=filename,
                 caption=f"MIME: {file_mime}\ndocument",
-                progress=progress,
+                progress=progress___,
                 reply_to_message_id=message.message_id,
-                progress_args=(
-                    updates,
-                    _now
-                ),
+#                 progress_args=(
+#                     updates,
+#                     _now
+#                 ),
             )
     except RPCError as err:
         raise Exception(f'{err}')
