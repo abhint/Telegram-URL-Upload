@@ -8,3 +8,4 @@ python-magic>=0.4.24
 hurry.filesize
 psutil>=5.8.0
 moviepy>=1.0.3
+ffmpeg-python
