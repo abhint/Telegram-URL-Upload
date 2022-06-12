@@ -1,6 +1,6 @@
 pip
 TgCrypto
-Pyrogram
+Pyrogram==1.2.11
 setuptools
 python-dotenv
 youtube_dl
