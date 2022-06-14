@@ -19,7 +19,6 @@ jobs:
           python-version: 3.9.9
       - uses: FedericoCarboni/setup-ffmpeg@v1
       - run: pip install -r requirements.txt
-      - run: youtube-dl --netrc
       - run: python -m bot
         env: 
           BOT_TOKEN: ${{secrets.BOT_TOKEN}}
