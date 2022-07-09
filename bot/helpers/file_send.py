@@ -13,21 +13,21 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
     _now = time.time()
     file_mime = magic.Magic(mime=True).from_file(file_path)
     file_name = os.path.basename(file_path)
-#     document_thumb = THUMB if THUMB else None
+    #document_thumb = THUMB if THUMB else None
     # file_name = file_path.split('/')[-1].split('.')[0]
     try:
         width, height, duration, thumb = video_details(file_path)
         await updates.edit_text('Uploading...')
         await client.send_document(
-                chat_id=updates.chat.id,
-                document=file_path,
-                caption=f"{file_name}",
-                reply_to_message_id=message.message_id,
-                thumb=thumb
-                # progress=progress,
-                # progress_args=(updates,),
-            )
-         await updates.edit_text(f'Uploaded...100% in {time_data(time.time() - _now)}')
+            chat_id=updates.chat.id,
+            document=file_path,
+            caption=f"{file_name}",
+            reply_to_message_id=message.message_id,
+            thumb=thumb
+            # progress=progress,
+            # progress_args=(updates,),
+        )
+        await updates.edit_text(f'Uploaded...100% in {time_data(time.time() - _now)}')
 #         if file_mime.startswith('video'):
 #             width, height, duration, thumb = video_details(file_path)
 #             await updates.edit_text('Uploading...')
