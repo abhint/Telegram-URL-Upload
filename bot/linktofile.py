@@ -1,5 +1,5 @@
 from pyrogram import Client
-from bot import (API_ID, API_HASH, BOT_TOKEN, logger, BANNER)
+from bot import (API_ID, API_HASH, BOT_TOKEN, logger)
 
 
 class TG(Client):
