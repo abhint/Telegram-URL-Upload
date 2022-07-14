@@ -14,8 +14,8 @@ async def incoming_urls(client: TG, message: Message) -> None:
     LOGGER.info(f'{message.from_user.id} - {message.text}')
     url = message.text
     if '|' in url:
-        url, file_name = url.replace(' ', '').split('|')
-        download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), file_name)
+        url, file_name = url.split('|')
+        download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), file_name.strip())
     else:
         download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), '%(title)s.%(ext)s')
 
