@@ -15,7 +15,8 @@ async def incoming_urls(client: TG, message: Message) -> None:
         url, file_name = url.split('|')
         download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), file_name.strip())
     else:
-        download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), f'{NAME_U} %(title)s.%(ext)s')
+        #download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), f'{NAME_U} %(title)s.%(ext)s')
+        download_location = DOWNLOAD_LOCATION.format(message.from_user.id, int(time.time()), f'%(title)s.%(ext)s')
 
     url_check = await link_check(url.strip(), message)
     if url_check is False:
