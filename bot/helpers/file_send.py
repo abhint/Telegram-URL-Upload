@@ -14,6 +14,7 @@ async def file_send(file_path: str, client: TG, updates: Message, message: Messa
     file_mime = magic.Magic(mime=True).from_file(file_path)
     file_name = os.path.basename(file_path)
     #document_thumb = THUMB if THUMB else None
+    print(f"{file_path}")
     # file_name = file_path.split('/')[-1].split('.')[0]
     try:
         width, height, duration, thumb = video_details(file_path)
